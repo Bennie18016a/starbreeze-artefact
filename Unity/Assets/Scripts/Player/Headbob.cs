@@ -21,9 +21,6 @@ namespace Player
 
         void Update()
         {
-
-
-
             if (Mathf.Abs(controller.moveDirection.x) > 0.1f || Mathf.Abs(controller.moveDirection.z) > 0.1f)
             {
                 timer += Time.deltaTime * (controller.running ? sprintBobbingSpeed : walkingBobbingSpeed);
