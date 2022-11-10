@@ -58,20 +58,20 @@ namespace Enviroment
                 {
                     Finish();
                 }
+
+                if (_holding)
+                {
+                    player.GetComponent<Movement>().canMove = !_holding;
+                }
+                else
+                {
+                    player.GetComponent<Movement>().canMove = !_holding;
+                    _fillTime = 0;
+                }
             }
             else
             {
                 textOBJ.enabled = false;
-            }
-
-            if (_holding)
-            {
-                player.GetComponent<Movement>().canMove = !_holding;
-            }
-            else
-            {
-                player.GetComponent<Movement>().canMove = !_holding;
-                _fillTime = 0;
             }
 
             interactionCircle.fillAmount = _fillTime;
