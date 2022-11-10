@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8240722852374989722}
   - component: {fileID: 4902793275413466234}
   - component: {fileID: 4226762014342003986}
+  - component: {fileID: 7895854654506212348}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -118,3 +119,20 @@ MonoBehaviour:
   dist: 2
   textOBJ: {fileID: 0}
   text: Hold F to open door
+  interactionCircle: {fileID: 0}
+--- !u!111 &7895854654506212348
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7591962544465439311}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: af2c5cc54dfa8024c995cf36b0275ea9, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: af2c5cc54dfa8024c995cf36b0275ea9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

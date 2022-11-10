@@ -92,7 +92,7 @@ namespace Enviroment
             Debug.Log("Succesfully Finished!");
             player.GetComponent<Movement>().canMove = true;
             Destroy(textOBJ.gameObject);
-            interactionCircle.enabled = false;
+            interactionCircle.fillAmount = 0;
 
             if ((int)Modes == 0)
             {
