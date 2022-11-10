@@ -1,19 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace StealthAI
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using Player;
-    using UnityEngine;
-
     public class FieldOfView : MonoBehaviour
     {
         public float radius;
-        [Range(0, 360)] public float angle;
+        [HideInInspector] public float angle;
+        [Range(0, 360)] public float idleAngle;
+        [Range(0, 360)] public float chaseAngle;
 
         public GameObject playerRef;
 
@@ -24,16 +21,14 @@ namespace StealthAI
 
         private void Start()
         {
-            playerRef = GameObject.FindGameObjectWithTag("Player");
+            playerRef = GameObject.FindWithTag("Player");
             StartCoroutine(FOVRoutine());
         }
 
         private void Update()
         {
-            // if (canSeePlayer)
-            // {
-            //     playerRef.GetComponent<Health>().TakeHealth(0.1f);
-            // }
+            if (canSeePlayer) { angle = chaseAngle; }
+            else { angle = idleAngle; }
         }
 
         private IEnumerator FOVRoutine()
