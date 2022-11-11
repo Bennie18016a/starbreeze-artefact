@@ -23,6 +23,8 @@ namespace StealthAI
         [Header("Sus Meter Settings")]
         [Tooltip("The speed they detect you at")]
         public int multipler = 1;
+        [Tooltip("How close behind do they have to be for the player to start getting detected")]
+        public float behind = 1.5f;
 
         #endregion
 
@@ -56,7 +58,7 @@ namespace StealthAI
 
         private void ValueSlider()
         {
-            if (fov.canSeePlayer)
+            if (fov.canSeePlayer || Behind())
             {
                 value += 1 * multipler * Time.deltaTime;
             }
@@ -84,6 +86,12 @@ namespace StealthAI
             {
                 value = 0;
             }
+        }
+
+        private bool Behind()
+        {
+            float distance = Vector3.Distance(fov.playerRef.transform.position, transform.position);
+            return distance < behind;
         }
 
         private void Spotted()

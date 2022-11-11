@@ -11,6 +11,7 @@ namespace StealthAI
         [SerializeField] DrawWaypoints patrolPath;
         [Min(1.1f)]
         [SerializeField] float waypointTolerance = 1.1f;
+        [SerializeField] SusMeter susMeter;
 
         Mover mover;
         GameObject player;
@@ -44,6 +45,7 @@ namespace StealthAI
                 PatrolBehaviour();
             }
 
+            if(susMeter.aggro) { chaseDistance = Mathf.Infinity; }
             timeSinceLastSawPlayer += Time.deltaTime;
         }
 
