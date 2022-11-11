@@ -715,9 +715,9 @@ GameObject:
   - component: {fileID: 4072284848834934477}
   - component: {fileID: 4072284848834934454}
   - component: {fileID: 7113830061001978365}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Civ
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -839,15 +839,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 10
   angle: 120
-  idleAngle: 120
+  idleAngle: 180
   chaseAngle: 180
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  aitargetMask:
+    serializedVersion: 2
+    m_Bits: 256
   obstructionMask:
     serializedVersion: 2
     m_Bits: 128
+  susMeter: {fileID: 4072284848834934454}
   canSeePlayer: 0
 --- !u!114 &4072284848834934479
 MonoBehaviour:
@@ -894,6 +898,7 @@ MonoBehaviour:
   nameText: {fileID: 4072284848268394760}
   multipler: 10
   behind: 2.5
+  value: 0
   aggro: 0
 --- !u!114 &7113830061001978365
 MonoBehaviour:

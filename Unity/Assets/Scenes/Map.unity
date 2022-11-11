@@ -1894,6 +1894,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 1438951464}
+    - target: {fileID: 6501737442272757552, guid: fb9c1b7496d2f4b4689c56286f0ddec0, type: 3}
+      propertyPath: aitargetMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6501737442272757557, guid: fb9c1b7496d2f4b4689c56286f0ddec0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1994,6 +1998,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 1438951464}
+    - target: {fileID: 4072284848834934448, guid: 9ba44d8edd6267540aa8cf838309087f, type: 3}
+      propertyPath: aitargetMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 4072284848834934453, guid: 9ba44d8edd6267540aa8cf838309087f, type: 3}
       propertyPath: m_RootOrder
       value: 6

@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 6501737442272757582}
   - component: {fileID: 6501737442272757581}
   - component: {fileID: 6501737442272757558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Guard
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,9 +148,13 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  aitargetMask:
+    serializedVersion: 2
+    m_Bits: 256
   obstructionMask:
     serializedVersion: 2
     m_Bits: 128
+  susMeter: {fileID: 6501737442272757558}
   canSeePlayer: 0
 --- !u!114 &6501737442272757583
 MonoBehaviour:
@@ -214,6 +218,7 @@ MonoBehaviour:
   nameText: {fileID: 6501737442846634120}
   multipler: 10
   behind: 2.5
+  value: 0
   aggro: 0
 --- !u!1 &6501737442274221102
 GameObject:

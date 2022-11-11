@@ -35,7 +35,7 @@ namespace StealthAI
 
         #region Private Variables
 
-        float value;
+        [HideInInspector] public float value;
         float maxValue = 100;
         bool sawPlayer;
         [HideInInspector] public bool aggro;
