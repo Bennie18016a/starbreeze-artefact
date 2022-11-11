@@ -11,14 +11,18 @@ namespace StealthAI
         [Header("Fundamentals")]
         [Tooltip("The field of view script attached to the AI")]
         public FieldOfView fov;
-        [Tooltip("The image that shows the meter")]
-        public UnityEngine.UI.Image susMeter;
-        [Tooltip("The text that shows how much they see you")]
-        public TMPro.TMP_Text susText;
         [Tooltip("Spotted Gameobject")]
         public GameObject spotted;
         [Tooltip("Sus Meter Gameobject")]
         public GameObject susMeterOBJ;
+
+        [Header("Fundamental UI")]
+        [Tooltip("The image that shows the meter")]
+        public UnityEngine.UI.Image susMeter;
+        [Tooltip("The text that shows how much they see you")]
+        public TMPro.TMP_Text susText;
+        [Tooltip("The name of the AI")]
+        public RectTransform nameText;
 
         [Header("Sus Meter Settings")]
         [Tooltip("The speed they detect you at")]
@@ -72,6 +76,18 @@ namespace StealthAI
             susText.enabled = value > 0;
             susText.text = ((int)value).ToString();
             susMeter.fillAmount = value / 100;
+
+            if (aggro)
+            {
+                nameText.localPosition = new Vector3(0, -1.25f, 0);
+            }
+            else if(value > 0)
+            {
+                nameText.localPosition = new Vector3(0, -0.5f, 0);
+            } else
+            {
+                nameText.localPosition = new Vector3(0, -1.25f, 0);
+            }
         }
 
         private void ValueManager()
