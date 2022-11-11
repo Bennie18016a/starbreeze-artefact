@@ -37,7 +37,6 @@ namespace StealthAI
 
         [HideInInspector] public float value;
         float maxValue = 100;
-        bool sawPlayer;
         [HideInInspector] public bool aggro;
 
         #endregion
@@ -53,8 +52,6 @@ namespace StealthAI
             ValueSlider();
             ValueManager();
             UI();
-
-            if (sawPlayer) { Spotted(); }
         }
 
         #endregion
@@ -82,10 +79,11 @@ namespace StealthAI
             {
                 nameText.localPosition = new Vector3(0, -1.25f, 0);
             }
-            else if(value > 0)
+            else if (value > 0)
             {
                 nameText.localPosition = new Vector3(0, -0.5f, 0);
-            } else
+            }
+            else
             {
                 nameText.localPosition = new Vector3(0, -1.25f, 0);
             }
@@ -96,7 +94,7 @@ namespace StealthAI
             if (value >= maxValue)
             {
                 value = maxValue;
-                sawPlayer = true;
+                Spotted();
             }
 
             if (value < 0)

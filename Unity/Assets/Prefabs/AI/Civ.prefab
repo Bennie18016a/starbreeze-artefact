@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPath: {fileID: 0}
-  waypointTolerance: 1.1
+  waypointTolerance: 2
   susMeter: {fileID: 4072284848834934454}
   escapePoints:
   - {fileID: 0}

@@ -41,6 +41,8 @@ namespace Civillian
             {
                 PatrolBehaviour();
             }
+
+            if (Vector3.Distance(transform.position, escapePoint.transform.position) < 2.5) { Destroy(gameObject); }
         }
 
         private void PatrolBehaviour()

@@ -81,7 +81,7 @@ namespace StealthAI
                 GameObject AIobj = AI.gameObject;
                 SusMeter AIsus = AIobj.GetComponent<SusMeter>();
 
-                if(AIobj == gameObject) { return; }
+                if (AIobj == gameObject) { return; }
 
                 if (AIsus == null) { continue; }
                 Transform target = AIobj.transform;
@@ -92,9 +92,9 @@ namespace StealthAI
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                        if(AIsus.aggro) { susMeter.value = 100; }
+                        if (AIsus.aggro) { susMeter.value = 101; }
                 }
             }
         }
     }
-    }
+}
