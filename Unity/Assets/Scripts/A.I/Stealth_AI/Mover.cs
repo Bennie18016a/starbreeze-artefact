@@ -1,7 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using StealthAI;
 
-namespace StealthAI
+namespace AI
 {
     public class Mover : MonoBehaviour
     {
