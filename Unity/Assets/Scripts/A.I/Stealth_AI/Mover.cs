@@ -6,15 +6,22 @@ namespace StealthAI
     public class Mover : MonoBehaviour
     {
         UnityEngine.AI.NavMeshAgent navMeshAgent;
-        private FieldOfView fov;
+        private SusMeter susMeter;
+        private bool seen;
         public bool rotate;
+        private Transform target;
         private void Start()
         {
             navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            fov = GetComponent<FieldOfView>();
+            susMeter = GetComponent<SusMeter>();
 
             if (rotate) return;
             navMeshAgent.updateRotation = false;
+        }
+
+        private void Update()
+        {
+            if (seen) { MoveTo(target.position); }
         }
 
         public void StartMoveAction(Vector3 destination)
@@ -22,10 +29,11 @@ namespace StealthAI
             MoveTo(destination);
         }
 
-        public void Chase(Transform target)
+        public void Chase(Transform _target)
         {
-            if (!fov.canSeePlayer) return;
-            MoveTo(target.position);
+            if (!susMeter.aggro) return;
+            seen = true;
+            target = _target;
         }
 
         public void MoveTo(Vector3 destination)

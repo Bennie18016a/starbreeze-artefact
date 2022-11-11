@@ -15,6 +15,10 @@ namespace StealthAI
         public UnityEngine.UI.Image susMeter;
         [Tooltip("The text that shows how much they see you")]
         public TMPro.TMP_Text susText;
+        [Tooltip("Spotted Gameobject")]
+        public GameObject spotted;
+        [Tooltip("Sus Meter Gameobject")]
+        public GameObject susMeterOBJ;
 
         [Header("Sus Meter Settings")]
         [Tooltip("The speed they detect you at")]
@@ -42,6 +46,8 @@ namespace StealthAI
             ValueSlider();
             ValueManager();
             UI();
+
+            if (sawPlayer) { Spotted(); }
         }
 
         #endregion
@@ -74,17 +80,30 @@ namespace StealthAI
                 sawPlayer = true;
             }
 
-            if (sawPlayer)
-            {
-                aggro = true;
-            }
-
             if (value < 0)
             {
                 value = 0;
             }
         }
 
+        private void Spotted()
+        {
+            aggro = true;
+            spotted.SetActive(true);
+            susMeterOBJ.SetActive(false);
+        }
+
+        #endregion
+
+        #region Collisions
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.transform.CompareTag("Player"))
+            {
+                value = 100;
+            }
+        }
         #endregion
     }
 }
