@@ -43,7 +43,8 @@ namespace Enviroment
         private void Start()
         {
             _fillMultipler = time * 0.01f;
-            _fillMultipler *= 4;
+            if (time <= 5) { _fillMultipler *= 4; }
+            interactionCircle.fillAmount = _fillTime;
         }
 
         private void Update()
@@ -67,6 +68,7 @@ namespace Enviroment
                 {
                     player.GetComponent<Movement>().canMove = !_holding;
                     _fillTime = 0;
+                    interactionCircle.fillAmount = _fillTime;
                 }
             }
             else
@@ -78,7 +80,10 @@ namespace Enviroment
                 }
             }
 
-            interactionCircle.fillAmount = _fillTime;
+            if (_fillTime > 0)
+            {
+                interactionCircle.fillAmount = _fillTime;
+            }
             TimeManagement();
         }
 
