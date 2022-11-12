@@ -10,33 +10,40 @@ namespace AI
         float time;
         int maxTime;
         bool answered;
-        bool started;
+        public bool started;
+        bool stopped;
 
         public Interaction inter;
+        public Outline outline;
+        [Tooltip("The gameobject for player text")]
+        public GameObject playerText;
 
         private void Update()
         {
-            while (started)
-            {
-                time += 1 * Time.deltaTime;
-            }
-
-            if (time > maxTime)
-            {
-                StopPager();
-            }
+            if (started && !inter._holding) { time += 1 * Time.deltaTime; }
+            if (time > maxTime) { StopPager(); }
             inter.enabled = started;
+            outline.enabled = started;
+
+            if (inter._holding) { time = -5; }
+            if (!inter._holding && time < 0 && !stopped) { StopPager(); }
         }
 
         public void StartPager(int time)
         {
-            maxTime = time;
             started = true;
+            stopped = false;
+            maxTime = time;
+            time = 0;
         }
 
         public void StopPager()
         {
+            stopped = true;
+            inter.textOBJ.text = null;
+            inter.enabled = false;
             started = false;
+            outline.enabled = false;
 
             if (!PagerAnswered())
             {
@@ -51,7 +58,22 @@ namespace AI
 
         public void AnsweredPager()
         {
+            StartCoroutine(AnswerPager());
+        }
+
+        private IEnumerator AnswerPager()
+        {
             answered = true;
+            StopPager();
+            playerText.SetActive(true);
+            playerText.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = string.Format("{0} here, everything seems fine. Out", gameObject.name);
+            yield return new WaitForSeconds(4);
+            playerText.SetActive(false);
+        }
+
+        public bool Answering()
+        {
+            return inter._holding;
         }
     }
 }

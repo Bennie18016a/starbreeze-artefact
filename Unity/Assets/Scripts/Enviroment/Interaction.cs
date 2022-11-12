@@ -38,7 +38,8 @@ namespace Enviroment
         float _time;
         float _fillTime;
         float _fillMultipler;
-        bool _holding, nulled = true;
+        [HideInInspector] public bool _holding;
+        bool nulled = true;
 
         private void Start()
         {
