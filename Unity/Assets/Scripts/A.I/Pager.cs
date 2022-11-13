@@ -17,6 +17,8 @@ namespace AI
         public Outline outline;
         [Tooltip("The gameobject for player text")]
         public GameObject playerText;
+        [Tooltip("The gameobject for boss text")]
+        public GameObject bossText;
 
         private void Update()
         {
@@ -48,6 +50,7 @@ namespace AI
             if (!PagerAnswered())
             {
                 Debug.Log("Alarm");
+                StartCoroutine(FailedPager());
             }
         }
 
@@ -63,12 +66,22 @@ namespace AI
 
         private IEnumerator AnswerPager()
         {
+            bossText.SetActive(false);
             answered = true;
             StopPager();
             playerText.SetActive(true);
             playerText.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = string.Format("{0} here, everything seems fine. Out", gameObject.name);
             yield return new WaitForSeconds(4);
             playerText.SetActive(false);
+        }
+
+        private IEnumerator FailedPager()
+        {
+            playerText.SetActive(false);
+            bossText.SetActive(true);
+            bossText.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = string.Format("That's it, I'm raising the alarm");
+            yield return new WaitForSeconds(4);
+            bossText.SetActive(false);
         }
 
         public bool Answering()

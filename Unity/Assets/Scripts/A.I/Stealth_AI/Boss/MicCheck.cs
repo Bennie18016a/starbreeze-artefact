@@ -54,15 +54,8 @@ namespace Boss
                 {
                     yield return new WaitForSeconds(timeToAnswer);
                 }
-                if (!dead.GetComponent<Pager>().PagerAnswered())
-                {
-                    bossText.SetActive(true);
-                    bossText.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = string.Format("That's it, I'm raising the alarm");
-                    yield return new WaitForSeconds(4);
-                    bossText.SetActive(false);
-                    break;
-                }
-                yield return new WaitForSeconds(7);
+                if (!dead.GetComponent<Pager>().PagerAnswered()) { break; }
+                yield return new WaitForSeconds(4);
             }
         }
     }

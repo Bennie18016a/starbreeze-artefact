@@ -294,6 +294,7 @@ MonoBehaviour:
   inter: {fileID: 32462944}
   outline: {fileID: 32462951}
   playerText: {fileID: 363926863}
+  bossText: {fileID: 1775831846}
 --- !u!114 &32462951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,6 +689,7 @@ MonoBehaviour:
   inter: {fileID: 287970528}
   outline: {fileID: 287970525}
   playerText: {fileID: 363926863}
+  bossText: {fileID: 1775831846}
 --- !u!114 &287970528
 MonoBehaviour:
   m_ObjectHideFlags: 0
