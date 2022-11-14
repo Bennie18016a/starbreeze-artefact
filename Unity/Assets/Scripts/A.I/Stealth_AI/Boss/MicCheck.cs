@@ -20,6 +20,7 @@ namespace Boss
 
         private float time;
         private bool started;
+        private bool alarm;
 
         public List<GameObject> deadPeople = new List<GameObject>();
 
@@ -31,10 +32,10 @@ namespace Boss
 
         private void GetDeadPeople()
         {
-            if (started) { return; }
+            if (started || alarm) { return; }
             started = true;
 
-            foreach (GameObject dead in GameObject.FindGameObjectsWithTag("Dead"))
+            foreach (GameObject dead in GameObject.FindGameObjectsWithTag("Dead Guard"))
             {
                 deadPeople.Add(dead);
             }
@@ -54,11 +55,16 @@ namespace Boss
                 {
                     yield return new WaitForSeconds(timeToAnswer);
                 }
-                if (!dead.GetComponent<Pager>().PagerAnswered()) { break; }
+                if (!dead.GetComponent<Pager>().PagerAnswered()) { AlarmRaised();   break; }
                 yield return new WaitForSeconds(4);
             }
             time = 0;
-            started = return;
+            started = false;
+        }
+
+        private void AlarmRaised()
+        {
+            alarm = true;
         }
     }
 }

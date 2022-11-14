@@ -43,6 +43,12 @@ namespace Enviroment
 
         private void Start()
         {
+            DeadVariables vars = GameObject.Find("DeadVariables").GetComponent<DeadVariables>();
+            player = vars.player;
+            textOBJ = vars.TextOBJ;
+            interactionCircle = vars.IntCircle;
+
+
             _fillMultipler = time * 0.01f;
             if (time <= 5) { _fillMultipler *= 4; }
             interactionCircle.fillAmount = _fillTime;

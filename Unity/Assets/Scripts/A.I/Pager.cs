@@ -20,6 +20,13 @@ namespace AI
         [Tooltip("The gameobject for boss text")]
         public GameObject bossText;
 
+        private void Start()
+        {
+            DeadVariables vars = GameObject.Find("DeadVariables").GetComponent<DeadVariables>();
+            playerText = vars.PlayerText;
+            bossText = vars.BossText;
+        }
+
         private void Update()
         {
             if (started && !inter._holding) { time += 1 * Time.deltaTime; }
@@ -46,6 +53,7 @@ namespace AI
             inter.enabled = false;
             started = false;
             outline.enabled = false;
+            time = 0;
 
             if (!PagerAnswered())
             {
