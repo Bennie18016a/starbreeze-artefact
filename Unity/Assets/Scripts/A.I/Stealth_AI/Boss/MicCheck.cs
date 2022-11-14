@@ -57,6 +57,8 @@ namespace Boss
                 if (!dead.GetComponent<Pager>().PagerAnswered()) { break; }
                 yield return new WaitForSeconds(4);
             }
+            time = 0;
+            started = return;
         }
     }
 }
