@@ -6,6 +6,7 @@ public class KillAI : MonoBehaviour
 {
     public GameObject deadGuardPrefab;
     public GameObject deadCivPrefab;
+    public GameObject deadCamPrefab;
 
     private void Update()
     {
@@ -21,6 +22,10 @@ public class KillAI : MonoBehaviour
                 } else if(hit.transform.tag == "AI" && hit.transform.name == "Civ")
                 {
                     Instantiate(deadCivPrefab, hit.transform.position, Quaternion.identity);
+                    Destroy(hit.transform.gameObject);
+                } else if (hit.transform.tag == "AI" && hit.transform.name == "Camera")
+                {
+                    Instantiate(deadCamPrefab, hit.transform.position, Quaternion.identity);
                     Destroy(hit.transform.gameObject);
                 }
             }
