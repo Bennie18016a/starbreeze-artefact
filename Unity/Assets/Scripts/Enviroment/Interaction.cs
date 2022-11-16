@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Player;
+using AI;
 
 namespace Enviroment
 {
@@ -37,13 +38,20 @@ namespace Enviroment
         float _time;
         float _fillTime;
         float _fillMultipler;
-        bool _holding;
+        [HideInInspector] public bool _holding;
+        bool nulled = true;
 
         private void Start()
         {
-            textOBJ.gameObject.transform.name = string.Format("{0}'s text OBJ", gameObject.transform.name);
+            DeadVariables vars = GameObject.Find("DeadVariables").GetComponent<DeadVariables>();
+            player = vars.player;
+            textOBJ = vars.TextOBJ;
+            interactionCircle = vars.IntCircle;
+
+
             _fillMultipler = time * 0.01f;
-            _fillMultipler *= 4;
+            if (time <= 5) { _fillMultipler *= 4; }
+            interactionCircle.fillAmount = _fillTime;
         }
 
         private void Update()
@@ -51,30 +59,38 @@ namespace Enviroment
             float distance = Vector3.Distance(player.transform.position, transform.position);
             if (distance < dist)
             {
-                textOBJ.enabled = true;
+                nulled = false;
                 textOBJ.text = text;
                 if (hold) { _holding = Input.GetKey(key); }
                 else if (Input.GetKeyDown(key))
                 {
                     Finish();
                 }
+
+                if (_holding)
+                {
+                    player.GetComponent<Movement>().canMove = !_holding;
+                }
+                else
+                {
+                    player.GetComponent<Movement>().canMove = !_holding;
+                    _fillTime = 0;
+                    interactionCircle.fillAmount = _fillTime;
+                }
             }
             else
             {
-                textOBJ.enabled = false;
+                if (!nulled)
+                {
+                    textOBJ.text = null;
+                    nulled = true;
+                }
             }
 
-            if (_holding)
+            if (_fillTime > 0)
             {
-                player.GetComponent<Movement>().canMove = !_holding;
+                interactionCircle.fillAmount = _fillTime;
             }
-            else
-            {
-                player.GetComponent<Movement>().canMove = !_holding;
-                _fillTime = 0;
-            }
-
-            interactionCircle.fillAmount = _fillTime;
             TimeManagement();
         }
 
@@ -91,12 +107,17 @@ namespace Enviroment
         {
             Debug.Log("Succesfully Finished!");
             player.GetComponent<Movement>().canMove = true;
-            Destroy(textOBJ.gameObject);
-            interactionCircle.enabled = false;
+            textOBJ.text = null;
+            interactionCircle.fillAmount = 0;
 
             if ((int)Modes == 0)
             {
                 GetComponent<Animation>().Play();
+            }
+
+            if ((int)Modes == 1)
+            {
+                GetComponent<Pager>().AnsweredPager();
             }
 
             this.enabled = false;
