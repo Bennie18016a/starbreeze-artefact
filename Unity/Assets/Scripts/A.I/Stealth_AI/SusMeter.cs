@@ -16,6 +16,8 @@ namespace StealthAI
         public GameObject spotted;
         [Tooltip("Sus Meter Gameobject")]
         public GameObject susMeterOBJ;
+        [Tooltip("Is this a camera?")]
+        public bool Camera;
 
         [Header("Fundamental UI")]
         [Tooltip("The image that shows the meter")]
@@ -114,6 +116,10 @@ namespace StealthAI
             aggro = true;
             spotted.SetActive(true);
             susMeterOBJ.SetActive(false);
+            if (Camera)
+            {
+                Debug.Log("Alarm");
+            }
         }
 
         #endregion

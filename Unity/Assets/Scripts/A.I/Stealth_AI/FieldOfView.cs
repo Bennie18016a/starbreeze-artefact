@@ -44,6 +44,7 @@ namespace StealthAI
                 yield return wait;
                 FieldOfViewCheck();
                 FieldOfViewCheckAI();
+                FieldOfViewCheckDead();
             }
         }
 
@@ -81,7 +82,7 @@ namespace StealthAI
                 GameObject AIobj = AI.gameObject;
                 SusMeter AIsus = AIobj.GetComponent<SusMeter>();
 
-                if (AIobj == gameObject) { return; }
+                if (AIobj == gameObject) { continue; }
 
                 if (AIsus == null) { continue; }
                 Transform target = AIobj.transform;
@@ -93,6 +94,33 @@ namespace StealthAI
 
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                         if (AIsus.aggro) { susMeter.value = 101; }
+                }
+            }
+        }
+
+        private void FieldOfViewCheckDead()
+        {
+            Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, aitargetMask);
+
+            foreach (Collider AI in rangeChecks)
+            {
+                GameObject AIobj = AI.gameObject;
+                Dead Dead = AIobj.GetComponent<Dead>();
+
+                if (AIobj == gameObject) { continue; }
+
+                if (Dead == null) { continue; }
+                
+
+                Transform target = AIobj.transform;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+                {
+                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    Debug.Log(AIobj.name);
+                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                        susMeter.value = 101;
                 }
             }
         }
