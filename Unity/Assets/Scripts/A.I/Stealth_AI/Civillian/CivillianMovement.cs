@@ -22,6 +22,7 @@ namespace Civillian
         Vector3 guardPosition;
 
         int currentWaypointIndex = 0;
+        [HideInInspector] public bool scared;
 
         private void Start()
         {
@@ -33,16 +34,24 @@ namespace Civillian
 
         private void Update()
         {
-            if (susMeter.aggro)
+            if (susMeter.aggro && !scared)
             {
                 mover.StartMoveAction(escapePoint.transform.position);
             }
-            else
+            else if (scared)
+            {
+                mover.StartMoveAction(transform.position);
+            } else if (!susMeter.aggro)
             {
                 PatrolBehaviour();
             }
 
             if (Vector3.Distance(transform.position, escapePoint.transform.position) < 2.5) { Destroy(gameObject); }
+        }
+
+        public void Shouted()
+        {
+            scared = true;
         }
 
         private void PatrolBehaviour()

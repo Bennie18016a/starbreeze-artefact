@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Civillian;
 
 public class AlarmScr : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class AlarmScr : MonoBehaviour
 
     private void Update()
     {
+        if (transform.name == "Civ" && GetComponent<CivillianMovement>().scared) return;
         if (alarm)
         {
             time += 1 * Time.deltaTime;
