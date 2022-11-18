@@ -36,6 +36,7 @@ public class Dead : MonoBehaviour
 
     private void Update()
     {
+        if (!Camera) return;
         if(Vector3.Distance(investGuard.transform.position, InvestergationArea.position) < 1.5f && Camera)
         {
             investGuard.GetComponent<AIMovement>().enabled = true;

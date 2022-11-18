@@ -110,3 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5861768b914ae6b45b3def54ff1e582b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: 0
+  InvestergationArea: {fileID: 8359317906286302014}
