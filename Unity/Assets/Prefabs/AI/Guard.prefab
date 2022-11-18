@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6501737442272757582}
   - component: {fileID: 6501737442272757581}
   - component: {fileID: 6501737442272757558}
+  - component: {fileID: 1285683791}
   m_Layer: 8
   m_Name: Guard
   m_TagString: AI
@@ -185,6 +186,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   susMeter: {fileID: 6501737442272757558}
+  waypoints: 0
 --- !u!114 &6501737442272757581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,13 +215,30 @@ MonoBehaviour:
   fov: {fileID: 6501737442272757552}
   spotted: {fileID: 6501737442274221102}
   susMeterOBJ: {fileID: 6501737443090652819}
+  Camera: 0
   susMeter: {fileID: 6501737442549095953}
   susText: {fileID: 6501737444030027916}
   nameText: {fileID: 6501737442846634120}
   multipler: 10
   behind: 2.5
+  alarm: {fileID: 1285683791}
   value: 0
   aggro: 0
+--- !u!114 &1285683791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501737442272757580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43d2ded55cc43f41885ca53902ac393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  maxtime: 5
+  alr: {fileID: 0}
 --- !u!1 &6501737442274221102
 GameObject:
   m_ObjectHideFlags: 0

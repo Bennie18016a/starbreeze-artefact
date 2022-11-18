@@ -32,6 +32,8 @@ namespace StealthAI
         public int multipler = 1;
         [Tooltip("How close behind do they have to be for the player to start getting detected")]
         public float behind = 1.5f;
+        [Tooltip("Alarm Script!")]
+        public AlarmScr alarm;
 
         #endregion
 
@@ -116,10 +118,7 @@ namespace StealthAI
             aggro = true;
             spotted.SetActive(true);
             susMeterOBJ.SetActive(false);
-            if (Camera)
-            {
-                Debug.Log("Alarm");
-            }
+            alarm.SoundAlarm();
         }
 
         #endregion
@@ -127,6 +126,22 @@ namespace StealthAI
         #region Collisions
 
         private void OnCollisionEnter(Collision other)
+        {
+            if (other.transform.CompareTag("Player"))
+            {
+                value = 100;
+            }
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.transform.CompareTag("Player"))
+            {
+                value = 100;
+            }
+        }
+
+        private void OnCollisionStay(Collision other)
         {
             if (other.transform.CompareTag("Player"))
             {

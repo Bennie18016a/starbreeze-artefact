@@ -893,11 +893,13 @@ MonoBehaviour:
   fov: {fileID: 4072284848834934448}
   spotted: {fileID: 4072284848836324782}
   susMeterOBJ: {fileID: 4072284847991877395}
+  Camera: 0
   susMeter: {fileID: 4072284848574328721}
   susText: {fileID: 4072284846783768844}
   nameText: {fileID: 4072284848268394760}
   multipler: 10
   behind: 2.5
+  alarm: {fileID: 0}
   value: 0
   aggro: 0
 --- !u!114 &7113830061001978365
@@ -916,6 +918,7 @@ MonoBehaviour:
   waypointTolerance: 2
   susMeter: {fileID: 4072284848834934454}
   escapePoints:
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &4072284848836324782
 GameObject:
