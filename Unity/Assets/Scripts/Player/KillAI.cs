@@ -23,7 +23,7 @@ public class KillAI : MonoBehaviour
                 {
                     Instantiate(deadCivPrefab, hit.transform.position, Quaternion.identity);
                     Destroy(hit.transform.gameObject);
-                } else if (hit.transform.tag == "AI" && hit.transform.name == "Camera")
+                } else if (hit.transform.tag == "Camera")
                 {
                     Instantiate(deadCamPrefab, hit.transform.position, Quaternion.identity);
                     Destroy(hit.transform.gameObject);

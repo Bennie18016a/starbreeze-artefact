@@ -21,6 +21,7 @@ namespace StealthAI
         float timeSinceLastSawPlayer = Mathf.Infinity;
 
         int currentWaypointIndex = 0;
+        [HideInInspector] public bool waypoints;
 
         private void Start()
         {
@@ -28,6 +29,7 @@ namespace StealthAI
             player = GameObject.FindWithTag("Player");
 
             guardPosition = transform.position;
+            waypoints = true;
         }
 
         private void Update()
@@ -54,7 +56,7 @@ namespace StealthAI
         {
             Vector3 nextPosition = guardPosition;
 
-            if (patrolPath != null)
+            if (patrolPath != null && waypoints)
             {
                 if (AtWaypoint())
                 {
