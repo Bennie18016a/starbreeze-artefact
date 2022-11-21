@@ -31,7 +31,6 @@ public class Dead : MonoBehaviour
         investGuard = Guards[Random.Range(0, Guards.Count)];
         investGuard.GetComponent<Mover>().StartMoveAction(InvestergationArea.position);
         investGuard.GetComponent<AIMovement>().enabled = false;
-        Debug.Log(investGuard.transform.name);
     }
 
     private void Update()

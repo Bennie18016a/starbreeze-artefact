@@ -12,15 +12,18 @@ public class AlarmScr : MonoBehaviour
     private void Update()
     {
         if (transform.name == "Civ" && GetComponent<CivillianMovement>().scared) return;
+        if (transform.name == "Manager" && GetComponent<CivillianMovement>().scared) return;
         if (alarm)
         {
             time += 1 * Time.deltaTime;
             if (transform.name == "Civ" && GetComponent<CivillianMovement>().scared) { alarm = false; }
+            if (transform.name == "Manager" && GetComponent<CivillianMovement>().scared) { alarm = false; }
         }
 
         if(time > maxtime && !alarmed)
         {
             if (transform.name == "Civ" && GetComponent<CivillianMovement>().scared) return;
+            if (transform.name == "Manager" && GetComponent<CivillianMovement>().scared) return;
             Debug.Log(alarm);
             alarmed = true;
             alr.AlarmFunc();

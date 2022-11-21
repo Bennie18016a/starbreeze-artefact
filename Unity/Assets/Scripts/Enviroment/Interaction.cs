@@ -19,8 +19,8 @@ namespace Enviroment
         public int time;
 
         public enum mode
-        { Door, Pager }
-        [Tooltip("What it does: door, lockpick, pager etc")]
+        { Door, Pager, Interrorgation }
+        [Tooltip("What it does: lockpick, pager etc")]
         public mode Modes;
 
         [Header("Fundamentals")]
@@ -116,6 +116,9 @@ namespace Enviroment
             } else if ((int)Modes == 1)
             {
                 GetComponent<Pager>().AnsweredPager();
+            } else if ((int)Modes == 2)
+            {
+                GetComponent<Interrorgate>().StartInterrorgation();
             }
 
             this.enabled = false;
