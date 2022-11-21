@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AI;
+using Civillian;
 
 namespace StealthAI
 {
@@ -18,6 +19,8 @@ namespace StealthAI
         public GameObject susMeterOBJ;
         [Tooltip("Is this a camera?")]
         public bool Camera;
+        [Tooltip("The script that controls the movement")]
+        public CivillianMovement movement;
 
         [Header("Fundamental UI")]
         [Tooltip("The image that shows the meter")]
@@ -98,6 +101,7 @@ namespace StealthAI
             if (value >= maxValue)
             {
                 value = maxValue;
+                if (gameObject.name == "Civ" && movement.scared) { return; }
                 Spotted();
             }
 

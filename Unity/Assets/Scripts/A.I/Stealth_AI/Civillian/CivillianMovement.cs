@@ -22,7 +22,7 @@ namespace Civillian
         Vector3 guardPosition;
 
         int currentWaypointIndex = 0;
-        [HideInInspector] public bool scared;
+        public bool scared;
 
         private void Start()
         {

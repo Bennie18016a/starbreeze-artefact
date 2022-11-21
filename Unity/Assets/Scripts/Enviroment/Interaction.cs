@@ -113,9 +113,7 @@ namespace Enviroment
             if ((int)Modes == 0)
             {
                 GetComponent<Animation>().Play();
-            }
-
-            if ((int)Modes == 1)
+            } else if ((int)Modes == 1)
             {
                 GetComponent<Pager>().AnsweredPager();
             }

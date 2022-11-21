@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 4072284848834934477}
   - component: {fileID: 4072284848834934454}
   - component: {fileID: 7113830061001978365}
+  - component: {fileID: 6501737443208624658}
   m_Layer: 8
   m_Name: Civ
   m_TagString: AI
@@ -894,6 +895,7 @@ MonoBehaviour:
   spotted: {fileID: 4072284848836324782}
   susMeterOBJ: {fileID: 4072284847991877395}
   Camera: 0
+  movement: {fileID: 7113830061001978365}
   susMeter: {fileID: 4072284848574328721}
   susText: {fileID: 4072284846783768844}
   nameText: {fileID: 4072284848268394760}
@@ -920,6 +922,22 @@ MonoBehaviour:
   escapePoints:
   - {fileID: 0}
   - {fileID: 0}
+  scared: 0
+--- !u!114 &6501737443208624658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072284848834934476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43d2ded55cc43f41885ca53902ac393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  maxtime: 10
+  alr: {fileID: 0}
 --- !u!1 &4072284848836324782
 GameObject:
   m_ObjectHideFlags: 0
