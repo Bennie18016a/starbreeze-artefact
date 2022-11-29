@@ -10,13 +10,17 @@ public class Interrorgate : MonoBehaviour
     public TMPro.TMP_Text _name;
     public TMPro.TMP_Text text;
 
-    void Start()
+    private void Awake()
     {
         a = (int)Random.Range(0f, 9f);
         b = (int)Random.Range(0f, 9f);
         c = (int)Random.Range(0f, 9f);
         d = (int)Random.Range(0f, 9f);
         int.TryParse(a.ToString() + b.ToString() + c.ToString() + d.ToString(), out code);
+    }
+
+    void Start()
+    {
         Debug.Log(string.Format("Code: {0}{1}{2}{3}", a, b, c, d));
     }
 

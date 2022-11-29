@@ -19,7 +19,7 @@ namespace Enviroment
         public int time;
 
         public enum mode
-        { Door, Pager, Interrorgation }
+        { Door, Pager, Interrorgation, Keypad }
         [Tooltip("What it does: lockpick, pager etc")]
         public mode Modes;
 
@@ -34,6 +34,8 @@ namespace Enviroment
         public string text;
         [Tooltip("Image of interaction circle")]
         public Image interactionCircle;
+        [Tooltip("Keypad gameobj")]
+        public GameObject keypad;
 
         float _time;
         float _fillTime;
@@ -62,7 +64,8 @@ namespace Enviroment
                 nulled = false;
                 textOBJ.text = text;
                 if (hold) { _holding = Input.GetKey(key); }
-                else if (Input.GetKeyDown(key))
+                
+                if (Input.GetKeyDown(key))
                 {
                     Finish();
                 }
@@ -97,7 +100,7 @@ namespace Enviroment
         private void TimeManagement()
         {
             if (_time < time && !_holding) { _time = 0; }
-            if (_time > time) { Finish(); }
+            if (_time > time && hold) { Finish(); }
 
             if (_holding) { _fillTime += _fillMultipler * Time.deltaTime; }
             _time += 1 * Time.deltaTime;
@@ -113,15 +116,22 @@ namespace Enviroment
             if ((int)Modes == 0)
             {
                 GetComponent<Animation>().Play();
+                this.enabled = false;
             } else if ((int)Modes == 1)
             {
                 GetComponent<Pager>().AnsweredPager();
+                this.enabled = false;
             } else if ((int)Modes == 2)
             {
                 GetComponent<Interrorgate>().StartInterrorgation();
+                this.enabled = false;
+            } else if ((int)Modes == 3)
+            {
+                player.GetComponent<Movement>().canMove = false;
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+                keypad.SetActive(true);
             }
-
-            this.enabled = false;
         }
     }
 }

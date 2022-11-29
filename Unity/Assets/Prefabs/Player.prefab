@@ -1068,6 +1068,8 @@ GameObject:
   - component: {fileID: 4064747631700638381}
   - component: {fileID: 1438951473}
   - component: {fileID: 4211256556254396791}
+  - component: {fileID: 6871818249538062587}
+  - component: {fileID: 7663243270886113174}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1246,6 +1248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadGuardPrefab: {fileID: 8359317906286301957, guid: c2a80178dc6f7844a864d2980b2a5522, type: 3}
   deadCivPrefab: {fileID: 8359317906286301957, guid: f07593b68ecd6bf4db6a6d46e6680584, type: 3}
+  deadCamPrefab: {fileID: 0}
 --- !u!114 &4211256556254396791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,6 +1265,41 @@ MonoBehaviour:
   timeToAnswer: 10
   bossText: {fileID: 1775831846}
   deadPeople: []
+--- !u!114 &6871818249538062587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064747631700638382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4a300ad5531804c8a27cda7add54ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeText: {fileID: 0}
+  interror: {fileID: 0}
+  alr: {fileID: 0}
+  keypad: {fileID: 0}
+--- !u!114 &7663243270886113174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064747631700638382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc9eba880944d9439c2e76555e4124c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &4064747631700988634
 GameObject:
   m_ObjectHideFlags: 0
